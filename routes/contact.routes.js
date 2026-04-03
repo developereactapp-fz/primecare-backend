@@ -13,8 +13,9 @@ const transporter = require("../config/mailer");
 
 router.post("/", async (req, res) => {
   try {
-    console.log("BODY DATA:", req.body); // 👈 ADD THIS
-
+    console.log("EMAIL_USER:" , process.env.EMAIL_USER);
+    console.log("EMAIL_HOST:" , process.env.EMAIL_HOST);
+    console.log("ADMIN_EMAIL:" , process.env.ADMIN_EMAIL);
 
     const { name, email, message } = req.body;
 
@@ -26,7 +27,7 @@ router.post("/", async (req, res) => {
 
     // Save to DB
     await Contact.create({ name, email, message, submittedAt });
-    console.log("SAVED DATA:", savedData); // 👈 ADD THIS
+
     /* ADMIN EMAIL */
     await transporter.sendMail({
       from: `"Prime Care Website" <${process.env.EMAIL_USER}>`,
