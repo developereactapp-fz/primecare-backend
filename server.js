@@ -11,12 +11,10 @@ const app = express();
 /* --------------------------
    CORS CONFIGURATION
 --------------------------- */
-
 const allowedOrigins = [
   "http://localhost:3000",
   "https://primecaremedicaltransport-frontend.vercel.app",
-  "https://primecaremedicaltransport.com",
-  "https://www.primecaremedicaltransport.com"
+  "https://primecaremedicaltransport.com"
 ];
 
 app.use(
@@ -32,14 +30,12 @@ app.use(express.json());
 /* --------------------------
    ROUTES
 --------------------------- */
-
 app.use("/api/contact", contactRoutes);
 app.use("/api/booking", bookingRoutes);
 
 /* --------------------------
    MONGODB CONNECTION
 --------------------------- */
-
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.error(err));
@@ -47,7 +43,6 @@ mongoose.connect(process.env.MONGO_URI)
 /* --------------------------
    LOCAL DEVELOPMENT
 --------------------------- */
-
 if (process.env.NODE_ENV !== "production") {
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () =>

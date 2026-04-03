@@ -1,14 +1,29 @@
 const express = require("express");
 const router = express.Router();
+
 const dayjs = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+const timezone = require("dayjs/plugin/timezone");
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 const Contact = require("../models/Contact");
 const transporter = require("../config/mailer");
 
 router.post("/", async (req, res) => {
   try {
+    console.log("EMAIL_USER:" , process.env.EMAIL_USER);
+    console.log("EMAIL_HOST:" , process.env.EMAIL_HOST);
+    console.log("ADMIN_EMAIL:" , process.env.ADMIN_EMAIL);
+
     const { name, email, message } = req.body;
 
-    const submittedAt = dayjs().format("DD MMM YYYY, hh:mm A");
+    // const submittedAt = dayjs().format("DD MMM YYYY, hh:mm A");
+
+    const submittedAt = dayjs()
+    .tz("asia/kolkata")
+    .format("DD MMM YYYY, hh:mm A");
 
     // Save to DB
     await Contact.create({ name, email, message, submittedAt });
