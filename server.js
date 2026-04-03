@@ -13,8 +13,9 @@ const app = express();
 --------------------------- */
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://primecaremedicaltransport-frontend.vercel.app",
-  "https://primecaremedicaltransport.com"
+  "https://primecare-front.vercel.app",
+  "https://www.primecaretransportations.com",
+  "https://primecaretransportations.com"
 ];
 
 app.use(
