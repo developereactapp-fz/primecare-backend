@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
     /* ADMIN EMAIL */
     await transporter.sendMail({
       from: `"Prime Care Website" <${process.env.EMAIL_USER}>`,
-      to: "primecaretransportations98@gmail.com",
+      to: "dispatch@primecaretransportations.com",
       subject: "New Contact Form Submission",
       html: `
         <h3>New Contact Message</h3>
