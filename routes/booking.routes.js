@@ -77,7 +77,7 @@ router.post("/", async (req, res) => {
 
     await transporter.sendMail({
       from: `"Prime Care Website" <${process.env.EMAIL_USER}>`,
-      to: "dispatch@primecaretransportations.com",
+      to: "process.env.ADMIN_EMAIL",
       subject: "New Booking Request",
       html: `
         <h3>New Booking Request</h3>
