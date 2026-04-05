@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
     await transporter.sendMail({
       from: `"Prime Care Transport" <${process.env.EMAIL_USER}>`,
       to: "info@primecaretransportations.com",
-      subject: "New Contact Form Submission from ${name} - Prime Care",
+      subject: `New Contact Form Submission from ${name} - Prime Care`,
       html: `
         <h3>New Contact Message</h3>
         <p><b>Name:</b> ${name}</p>
